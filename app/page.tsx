@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function Page() {
   const [advice, setAdvice] = useState("");
-  const [number, setNumber] = useState(-1);
+  const [number, setNumber] = useState(0);
 
   async function getAdvice() {
     const response = await fetch("https://api.adviceslip.com/advice");
@@ -14,7 +14,7 @@ export default function Page() {
   }
 
   useEffect(() => {
-    getAdvice();
+    Promise.resolve().then(getAdvice);
   }, []);
 
   return (
